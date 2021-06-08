@@ -72,7 +72,9 @@ function setUpShaders () {
     const tolerance = isNaN(k.tolerance) ? 0.3 : k.tolerance.toFixed(3)
     const amount = isNaN(k.amount) ? 1 : k.amount.toFixed(3)
 
-    keyFunctions += `pixel.a = distAlpha(${color}, ${tolerance}, ${amount});\n`
+    keyFunctions += `pixel.a = distAlpha(${color}, float(${tolerance}), float(${amount}));\n`
+
+    //keyFunctions += `pixel.a = distAlpha(${color}, ${tolerance}, ${amount});\n`
     if (k.debug) keyFunctions += 'debug();\n'
   })
 
